@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Shahid 🎉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+/* Video background */
+video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Center content */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background: rgba(0,0,0,0.55);
+    padding: 30px;
+    border-radius: 20px;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #ffd700;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    background: #ff4081;
+    color: white;
+    cursor: pointer;
+}
+button:hover {
+    background: #e73370;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Video (online link, download ki zaroorat nahi) -->
+<video autoplay muted loop>
+    <source src="https://cdn.coverr.co/videos/coverr-birthday-cake-with-candles-1576/1080p.mp4" type="video/mp4">
+</video>
+
+<div class="content">
+    <h1>🎂 Happy Birthday 🎂</h1>
+    <h2>Shahid</h2>
+    <p>
+        Allah aap ko lambi zindagi, sehat,  
+        aur kamyabi ata farmaye.  
+        Aaj ka din sirf aap ke naam 💖
+    </p>
+    <button onclick="playVoice()">🎧 Birthday Voice Suno</button>
+</div>
+
+<script>
+function playVoice() {
+    let msg = new SpeechSynthesisUtterance(
+        "Happy Birthday Shahid. May Allah bless you with happiness, success, and a long life. Enjoy your special day."
+    );
+    msg.lang = "en-US";
+    msg.rate = 0.9;
+    msg.pitch = 1;
+    window.speechSynthesis.speak(msg);
+}
+
+// Auto voice on page load
+window.onload = () => {
+    setTimeout(playVoice, 2000);
+};
+</script>
+
+</body>
+</html>

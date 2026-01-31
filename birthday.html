@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    text-align: center;
+    color: Yellow;
+}
+
+.card {
+    margin-top: 80px;
+    background: rgba(255,255,255,0.2);
+    padding: 30px;
+    border-radius: 25px;
+    display: inline-block;
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+input, button {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    width: 90%;
+    margin-top: 10px;
+}
+
+button {
+    background: skyblue;
+    cursor: pointer;
+}
+
+/* Cake */
+.cake {
+    font-size: 80px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Balloons */
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 40px;
+    height: 60px;
+    border-radius: 50%;
+    animation: float 10s infinite;
+}
+
+@keyframes float {
+    0% { bottom: -100px; }
+    100% { bottom: 110%; }
+}
+
+/* Fireworks */
+.firework {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: yellow;
+    border-radius: 50%;
+    animation: explode 1s linear;
+}
+
+@keyframes explode {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(8); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<div class="card">
+    <h1 id="title">🎉 Wish you very Happy Birthday 🎉</h1>
+
+    <input type="text" id="name" placeholder="Apna Naam Likhein">
+    <button onclick="showWish()">Wish Me 🎂(Click me)</button>
+
+    <p id="msg"></p>
+
+    <div class="cake" onclick="cutCake()">🎂</div>
+    <p id="cakeMsg"></p>
+</div>
+
+<!-- Balloons -->
+<div class="balloon" style="left:10%; background:red;"></div>
+<div class="balloon" style="left:30%; background:yellow;"></div>
+<div class="balloon" style="left:50%; background:blue;"></div>
+<div class="balloon" style="left:70%; background:green;"></div>
+<div class="balloon" style="left:90%; background:purple;"></div>
+
+<script>
+function showWish() {
+    let name = document.getElementById("name").value;
+    document.getElementById("title").innerHTML =
+        "🎉 Happy Birthday " + name + " 🎉";
+
+    document.getElementById("msg").innerHTML =
+        "Allah aap ko sehat, kamyabi aur lambi umar ata farmaye 🤲😊 (Cake per Click kary)";
+
+    fireworks();
+}
+
+function cutCake() {
+    document.getElementById("cakeMsg").innerHTML =
+        "🍰 Cake Cut Ho Gaya! Mubarak Ho 🎉";
+    fireworks();
+}
+
+function fireworks() {
+    for (let i = 0; i < 20; i++) {
+        let fw = document.createElement("div");
+        fw.className = "firework";
+        fw.style.left = Math.random() * 100 + "vw";
+        fw.style.top = Math.random() * 100 + "vh";
+        fw.style.background = "hsl(" + Math.random()*360 + ",100%,50%)";
+        document.body.appendChild(fw);
+
+        setTimeout(() => fw.remove(), 1000);
+    }
+}
+</script>
+
+</body>
+</html>
